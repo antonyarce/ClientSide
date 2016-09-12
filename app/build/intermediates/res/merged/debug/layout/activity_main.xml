@@ -5,14 +5,10 @@
     android:orientation="vertical" >
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/infoip"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:autoLink="web"
-        android:text="http://androidSRC.net/"
-        android:textStyle="bold" />
+        android:layout_gravity="center_horizontal" />
 
     <EditText
         android:id="@+id/addressEditText"
@@ -25,6 +21,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Server port number" />
+
+    <EditText
+        android:id="@+id/lstPortEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Listen port number" />
+
+    <EditText
+        android:id="@+id/bytesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Bytes disponibles" />
+
+    <EditText
+        android:id="@+id/numEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Bytes disponibles" />
 
     <Button
         android:id="@+id/connectButton"
@@ -48,5 +62,15 @@
         android:id="@+id/onlineClientsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </ScrollView>
 
 </LinearLayout>

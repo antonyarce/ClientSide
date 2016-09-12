@@ -11,6 +11,8 @@ import java.net.UnknownHostException;
 import android.os.AsyncTask;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class Client extends AsyncTask<Void, Void, Void> {
@@ -20,12 +22,14 @@ public class Client extends AsyncTask<Void, Void, Void> {
     String response = "";
     TextView textResponse;
     Socket socket;
+    JSONObject json;
 
 
     Client(String addr, int port,TextView textResponse) {
         dstAddress = addr;
         dstPort = port;
         this.textResponse=textResponse;
+
     }
 
 
@@ -37,6 +41,12 @@ public class Client extends AsyncTask<Void, Void, Void> {
         try {
             socket = new Socket(dstAddress, dstPort);
 
+            JSONObject json = new JSONObject();
+
+            json.put("bytesDisp", "1000");
+            json.put("numero", "60044840");
+            json.put("puert0", "21000");
+
             //Recibe mensaje del servidor
             DataInputStream istream = new DataInputStream(socket.getInputStream());
             response = istream.readUTF();
@@ -44,7 +54,7 @@ public class Client extends AsyncTask<Void, Void, Void> {
             // Envia mensaje al servidor
             OutputStream ostream = socket.getOutputStream();
             ObjectOutput s = new ObjectOutputStream(ostream);
-            s.writeUTF("Hola desde el cliente");
+            s.writeUTF(json.toString());
             s.flush();
 
 
@@ -56,6 +66,8 @@ public class Client extends AsyncTask<Void, Void, Void> {
             // TODO Auto-generated catch block
             e.printStackTrace();
             response = "IOException: " + e.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
         } finally {
             if (socket != null) {
                 try {

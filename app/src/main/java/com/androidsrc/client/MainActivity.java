@@ -11,8 +11,10 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 
 	TextView response;
-	EditText editTextAddress, editTextPort;
+	EditText editTextAddress, editTextPort, editTextLstPort, editTextBytes, editTextNum;
 	Button buttonConnect, buttonClear;
+    Server server;
+    TextView infoip, msg;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +23,17 @@ public class MainActivity extends Activity {
 
 		editTextAddress = (EditText) findViewById(R.id.addressEditText);
 		editTextPort = (EditText) findViewById(R.id.portEditText);
+        editTextLstPort = (EditText) findViewById(R.id.lstPortEditText);
+        editTextBytes = (EditText) findViewById(R.id.bytesEditText);
+        editTextNum = (EditText) findViewById(R.id.numEditText);
 		buttonConnect = (Button) findViewById(R.id.connectButton);
 		buttonClear = (Button) findViewById(R.id.clearButton);
 		response = (TextView) findViewById(R.id.responseTextView);
 
-
+        infoip = (TextView) findViewById(R.id.infoip);
+        msg = (TextView) findViewById(R.id.msg);
+        server = new Server(this);
+        infoip.setText(server.getIpAddress()+":"+server.getPort());
 
 		buttonConnect.setOnClickListener(new OnClickListener() {
 
@@ -35,6 +43,7 @@ public class MainActivity extends Activity {
 						.toString(), Integer.parseInt(editTextPort
 						.getText().toString()), response);
 				myClient.execute();
+
 			}
 		});
 
