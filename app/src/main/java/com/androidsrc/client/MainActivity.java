@@ -25,6 +25,8 @@ public class MainActivity extends Activity {
 		buttonClear = (Button) findViewById(R.id.clearButton);
 		response = (TextView) findViewById(R.id.responseTextView);
 
+
+
 		buttonConnect.setOnClickListener(new OnClickListener() {
 
 			@Override
