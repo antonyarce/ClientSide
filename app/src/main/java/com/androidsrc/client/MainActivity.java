@@ -13,8 +13,6 @@ public class MainActivity extends Activity {
 	TextView response;
 	EditText editTextAddress, editTextPort, editTextLstPort, editTextBytes, editTextNum;
 	Button buttonConnect, buttonClear;
-    Server server;
-    TextView infoip, msg;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +28,17 @@ public class MainActivity extends Activity {
 		buttonClear = (Button) findViewById(R.id.clearButton);
 		response = (TextView) findViewById(R.id.responseTextView);
 
-        infoip = (TextView) findViewById(R.id.infoip);
-        msg = (TextView) findViewById(R.id.msg);
-        server = new Server(this);
-        infoip.setText(server.getIpAddress()+":"+server.getPort());
 
 		buttonConnect.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
-				Client myClient = new Client(editTextAddress.getText()
-						.toString(), Integer.parseInt(editTextPort
-						.getText().toString()), response);
+				Client myClient = new Client(editTextAddress.getText().toString(),
+                        Integer.parseInt(editTextPort.getText().toString()),
+                        Integer.parseInt(editTextLstPort.getText().toString()),
+                        Integer.parseInt(editTextNum.getText().toString()),
+                        Integer.parseInt(editTextBytes.getText().toString()),
+                        response);
 				myClient.execute();
 
 			}

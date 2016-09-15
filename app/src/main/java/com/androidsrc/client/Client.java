@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import android.os.AsyncTask;
@@ -19,15 +20,21 @@ public class Client extends AsyncTask<Void, Void, Void> {
 
     String dstAddress;
     int dstPort;
+    int lstPort;
+    int num;
+    int bytesDis;
     String response = "";
     TextView textResponse;
     Socket socket;
     JSONObject json;
 
 
-    Client(String addr, int port,TextView textResponse) {
+    Client(String addr, int port, int lstPort, int num, int bytesDis, TextView textResponse) {
         dstAddress = addr;
         dstPort = port;
+        this.lstPort = lstPort;
+        this.num = num;
+        this.bytesDis = bytesDis;
         this.textResponse=textResponse;
 
     }
@@ -43,9 +50,10 @@ public class Client extends AsyncTask<Void, Void, Void> {
 
             JSONObject json = new JSONObject();
 
-            json.put("bytesDisp", "1000");
-            json.put("numero", "60044840");
-            json.put("puert0", "21000");
+            json.put("puerto", lstPort);
+            json.put("bytesDisp", bytesDis);
+            json.put("numero", num);
+            json.put("tipo", "meshMemClient");
 
             //Recibe mensaje del servidor
             DataInputStream istream = new DataInputStream(socket.getInputStream());
