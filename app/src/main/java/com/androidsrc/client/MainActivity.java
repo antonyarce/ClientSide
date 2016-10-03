@@ -33,13 +33,13 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				Client myClient = new Client(editTextAddress.getText().toString(),
+				Node meshNode = new Node(editTextAddress.getText().toString(),
                         Integer.parseInt(editTextPort.getText().toString()),
                         Integer.parseInt(editTextLstPort.getText().toString()),
                         Integer.parseInt(editTextNum.getText().toString()),
                         Integer.parseInt(editTextBytes.getText().toString()),
                         response);
-				myClient.execute();
+				meshNode.execute();
 
 			}
 		});
