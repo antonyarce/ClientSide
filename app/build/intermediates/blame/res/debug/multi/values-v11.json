@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/antonyarce/Documents/Android/AndroidStudioProjects/ClientSide/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v11/values-v11.xml",
+        "outputFile": "/home/allan/AndroidStudioProjects/ClientSideAndroid/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v11/values-v11.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 187
                 },
                 "from": {
-                    "file": "/Users/antonyarce/Documents/Android/AndroidStudioProjects/ClientSide/app/src/main/res/values-v11/styles.xml",
+                    "file": "/home/allan/AndroidStudioProjects/ClientSideAndroid/app/src/main/res/values-v11/styles.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,

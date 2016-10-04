@@ -1,6 +1,10 @@
 [
     {
-        "merged": "/Users/antonyarce/Documents/Android/AndroidStudioProjects/ClientSide/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
-        "source": "/Users/antonyarce/Documents/Android/AndroidStudioProjects/ClientSide/app/src/main/res/layout/activity_main.xml"
+        "merged": "/home/allan/AndroidStudioProjects/ClientSideAndroid/app/build/intermediates/res/merged/debug/layout/map.xml",
+        "source": "/home/allan/AndroidStudioProjects/ClientSideAndroid/app/src/main/res/layout/map.xml"
+    },
+    {
+        "merged": "/home/allan/AndroidStudioProjects/ClientSideAndroid/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/home/allan/AndroidStudioProjects/ClientSideAndroid/app/src/main/res/layout/activity_main.xml"
     }
 ]

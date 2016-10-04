@@ -1,6 +1,12 @@
 package com.androidsrc.client;
 
 
+import android.os.AsyncTask;
+import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.ObjectOutput;
@@ -8,14 +14,11 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import android.os.AsyncTask;
-import android.widget.TextView;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 
 public class Node extends AsyncTask<Void, Void, Void> {
 
+    MainActivity activity;
     String dstAddress;
     int dstPort;
     int lstPort;
@@ -52,16 +55,20 @@ public class Node extends AsyncTask<Void, Void, Void> {
             json.put("bytesDisp", bytesDis);
             json.put("numero", num);
             json.put("tipo", "meshMemClient");
-
-            //Recibe mensaje del servidor
-            DataInputStream istream = new DataInputStream(socket.getInputStream());
-            response = istream.readUTF();
+            json.put("Accion","NodeConexion");
 
             // Envia mensaje al servidor
             OutputStream ostream = socket.getOutputStream();
             ObjectOutput s = new ObjectOutputStream(ostream);
             s.writeUTF(json.toString());
             s.flush();
+            //Recibe mensaje del servidor
+            DataInputStream istream = new DataInputStream(socket.getInputStream());
+            response = istream.readUTF();
+            JsonManager.parse(response);
+
+            //activity.pasar();
+
 
 
         } catch (UnknownHostException e) {
