@@ -68,6 +68,7 @@ public class Node extends AsyncTask<Void, Void, Void> {
             //Recibe mensaje del servidor
             DataInputStream istream = new DataInputStream(socket.getInputStream());
             response = istream.readUTF();
+
             JsonManager.parse(response);
 
             //activity.pasar();
