@@ -5,6 +5,7 @@ package com.androidsrc.client;
  */
 
 import org.json.JSONObject;
+
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,15 +27,21 @@ public class Server {
     ArrayList listTotMemClient;
     ArrayList listAvaMemClient;
     String message = "";
-    static final int socketServerPORT = 21000;
+    static int socketServerPORT;
     JSONObject jsonObject;
 
 
-    public Server(MainActivity activity) {
-
-        this.activity = activity;
+    public Server(MainActivity context, int port) {
+        this.socketServerPORT=port;
+        this.activity = context;
         Thread socketServerThread = new Thread(new SocketServerThread());
         socketServerThread.start();
+
+    }
+
+
+    public String getMessage(){
+        return this.message;
     }
 
     public int getPort() {
@@ -54,11 +61,13 @@ public class Server {
 
     private class SocketServerThread extends Thread {
 
+
         int count = 0;
 
         @Override
         public void run() {
             try {
+
                 serverSocket = new ServerSocket(socketServerPORT);
 
                 while (true) {
@@ -106,26 +115,20 @@ public class Server {
             String msgReply = "Hello from node, online clients: " + cnt;
 
             try {
-                // Envia mensaje al cliente
-                DataOutputStream ostream = new DataOutputStream(hostThreadSocket.getOutputStream());
-                ostream.writeUTF(msgReply);
-                ostream.flush();
-
-                message += "replayed: " + msgReply + "\n";
-
-                activity.runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        //activity.msg.setText(message);
-                    }
-                });
-
                 // Recibe mensaje del cliente
                 InputStream istream = hostThreadSocket.getInputStream();
                 ObjectInput in = new ObjectInputStream(istream);
                 message = in.readUTF();
+                System.out.println(message);
 
+
+
+
+                // Envia mensaje al cliente
+                DataOutputStream ostream = new DataOutputStream(hostThreadSocket.getOutputStream());
+                ostream.writeUTF(msgReply);
+                ostream.flush();
+                //message="Aqui";
 
 
 
@@ -141,7 +144,7 @@ public class Server {
 
                 @Override
                 public void run() {
-                   // activity.msg.setText(message);
+
                 }
             });
         }
@@ -163,8 +166,7 @@ public class Server {
                             .nextElement();
 
                     if (inetAddress.isSiteLocalAddress()) {
-                        ip += "Server running at : "
-                                + inetAddress.getHostAddress();
+                        ip = inetAddress.getHostAddress();
                     }
                 }
             }

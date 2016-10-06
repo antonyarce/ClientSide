@@ -32,19 +32,20 @@ public class MainActivity extends Activity{
 		linear = (LinearLayout)findViewById(R.id.layout);
 
 
+
 		buttonConnect.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
+				Server server=new Server(MainActivity.this,Integer.parseInt(editTextLstPort.getText().toString()));
 				Node meshNode = new Node(editTextAddress.getText().toString(),
                         Integer.parseInt(editTextPort.getText().toString()),
                         Integer.parseInt(editTextLstPort.getText().toString()),
                         Integer.parseInt(editTextNum.getText().toString()),
                         Integer.parseInt(editTextBytes.getText().toString()),
-                        response);
+                        response,server.getIpAddress());
 				meshNode.execute();
 				pasar();
-
 
 
 
@@ -60,6 +61,9 @@ public class MainActivity extends Activity{
 			}
 		});
 	}
+
+
+
 
 	public void pasar(){
 		Intent i = new Intent(MainActivity.this,MapActivity.class);

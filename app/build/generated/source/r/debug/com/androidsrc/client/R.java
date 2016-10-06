@@ -18,13 +18,14 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000c;
+        public static final int action_settings=0x7f08000d;
         public static final int addressEditText=0x7f080002;
         public static final int bytesEditText=0x7f080005;
         public static final int clearButton=0x7f080008;
         public static final int connectButton=0x7f080007;
         public static final int infoip=0x7f080001;
         public static final int layout=0x7f080000;
+        public static final int lista=0x7f08000c;
         public static final int lstPortEditText=0x7f080004;
         public static final int msg=0x7f08000b;
         public static final int numEditText=0x7f080006;

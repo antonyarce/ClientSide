@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 
 public class MapActivity extends Activity {
+    Server server;
     ListView list;
     ArrayList<String> arrayList;
     ArrayAdapter<String> adapter;
@@ -23,5 +24,11 @@ public class MapActivity extends Activity {
         arrayList = new ArrayList<String>();
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
         list.setAdapter(adapter);
+
+
+
+
+
     }
+
 }

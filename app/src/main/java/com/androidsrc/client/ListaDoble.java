@@ -1,8 +1,5 @@
 package com.androidsrc.client;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
 public class ListaDoble {
 	// se  declara  un nodo inicial de la lista  y uno final.
 	public NodoDoble inicio,fin;
@@ -25,24 +22,24 @@ public class ListaDoble {
 	 * agregarFinal es   un  metodo  se  encarga  de   agregar  un elemento al final de  la lista.
 	 * 
 	 */
-	public void agregarFinal(Object ele){
+	public void agregarFinal(String id,int byteTotales){
 		if (!estaVacia()){
-			fin= new NodoDoble(ele, null, fin);// se hace  una instancia creando un nodo  al final de la lista. 
+			fin= new NodoDoble(id,byteTotales, null, fin);// se hace  una instancia creando un nodo  al final de la lista.
 			fin.anterior.siguiente=fin;
 			}else{
-				inicio=fin=new NodoDoble(ele);
+				inicio=fin=new NodoDoble(id,byteTotales);
 			}
 		}
 	/**
 	 * agregarInicio es un metodo cuya funci�n es agregar un elemento al inicio de  la lista 
 	 *  
 	 */
-	public void agregarInicio(Object ele){
+	public void agregarInicio(String id, int byteTotales){
 		if (!estaVacia()){//verifica que la lista no est� vac�a 
-			inicio=new NodoDoble(ele, inicio, null);
+			inicio=new NodoDoble(id,byteTotales,inicio, null);
 			inicio.siguiente.anterior= inicio;
 			}else{
-				inicio=fin=new NodoDoble(ele);
+				inicio=fin=new NodoDoble(id,byteTotales);
 			}
 		}
 	
@@ -56,7 +53,7 @@ public class ListaDoble {
 		if(!estaVacia()){
 			NodoDoble auxiliar = inicio;
 			while (auxiliar!=null){
-				datos = datos + "{"+auxiliar.dato+"}"+"<=>";
+				datos = datos + "{"+auxiliar.id+"}"+"<=>";
 				auxiliar=auxiliar.siguiente;
 				
 			}	
@@ -73,7 +70,7 @@ public class ListaDoble {
 		if(!estaVacia()){
 			NodoDoble auxiliar = fin;
 			while (auxiliar!=null){
-				datos = datos + "{"+auxiliar.dato+"}"+"<=>";
+				datos = datos + "{"+auxiliar.id+"}"+"<=>";
 				auxiliar=auxiliar.anterior;
 				
 			}		
@@ -88,11 +85,11 @@ public class ListaDoble {
 	 */
 	public Object buscar(Object elemento){
 		NodoDoble auxiliar=inicio;
-		for ( ; auxiliar != null && !elemento.equals(auxiliar.dato); auxiliar = auxiliar.siguiente);
+		for ( ; auxiliar != null && !elemento.equals(auxiliar.id); auxiliar = auxiliar.siguiente);
 		if(auxiliar==null){
 			return null;
 		}else{
-			return auxiliar.dato;
+			return auxiliar.id;
 		}
 		
 	}
@@ -130,15 +127,15 @@ public class ListaDoble {
 		NodoDoble iterador = inicio;
 		if(inicio==fin){
 			inicio=fin=null;
-		}else if (dato.equals(inicio.dato)){
+		}else if (dato.equals(inicio.id)){
 			inicio=inicio.siguiente;
 			inicio.anterior=null;
-		}else if (dato.equals(fin.dato)){
+		}else if (dato.equals(fin.id)){
 			fin=fin.anterior;
 			fin.siguiente=null;
 		}else{
 			while ( buscado == null && iterador != null ) {
-				if ( dato.equals(iterador.dato)) { 
+				if ( dato.equals(iterador.id)) {
 					buscado = iterador; 
 				} 
 				iterador = iterador.siguiente; 
@@ -171,7 +168,7 @@ public class ListaDoble {
 	
 
 	
-	public ListaDoble enlistar_Array(JSONArray arrayString, JSONArray arrayNumeral ) throws JSONException{
+	/*public ListaDoble enlistar_Array(JSONArray arrayString, JSONArray arrayNumeral ) throws JSONException{
 		ListaDoble lista_array = new ListaDoble();
 		if (arrayString == null && arrayNumeral!=null){
 			for(int i=0; i < arrayNumeral.length(); i++){
@@ -184,6 +181,6 @@ public class ListaDoble {
 		}
 		}
 		return lista_array;
-	}
+	}*/
 
 }

@@ -27,16 +27,17 @@ public class Node extends AsyncTask<Void, Void, Void> {
     String response = "";
     TextView textResponse;
     Socket socket;
-    JSONObject json;
+    String ip;
 
 
-    Node(String addr, int port, int lstPort, int num, int bytesDis, TextView textResponse) {
+    Node(String addr, int port, int lstPort, int num, int bytesDis, TextView textResponse, String ip) {
         dstAddress = addr;
         dstPort = port;
         this.lstPort = lstPort;
         this.num = num;
         this.bytesDis = bytesDis;
         this.textResponse=textResponse;
+        this.ip=ip;
 
     }
 
@@ -56,6 +57,8 @@ public class Node extends AsyncTask<Void, Void, Void> {
             json.put("numero", num);
             json.put("tipo", "meshMemClient");
             json.put("Accion","NodeConexion");
+            json.put("Ip",ip);
+
 
             // Envia mensaje al servidor
             OutputStream ostream = socket.getOutputStream();
