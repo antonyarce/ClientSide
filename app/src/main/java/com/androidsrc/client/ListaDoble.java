@@ -2,12 +2,18 @@ package com.androidsrc.client;
 
 public class ListaDoble {
 	// se  declara  un nodo inicial de la lista  y uno final.
-	public NodoDoble inicio,fin;
+	public MemoryBlock inicio,fin;
+	int size;
+	String idEspacio;
+	String dato;
 
 	public ListaDoble(){
 		// le asigna por  defecto a los  nodos  creados  que apunteen a null.
 		inicio=fin=null;
+
 	}
+
+
 	
 	/**
 	 * m�todo  que  analiza si la lista  esta  vacia,
@@ -22,24 +28,24 @@ public class ListaDoble {
 	 * agregarFinal es   un  metodo  se  encarga  de   agregar  un elemento al final de  la lista.
 	 * 
 	 */
-	public void agregarFinal(String id,int byteTotales){
+	public void agregarFinal(String id, String dato, int size){
 		if (!estaVacia()){
-			fin= new NodoDoble(id,byteTotales, null, fin);// se hace  una instancia creando un nodo  al final de la lista.
+			fin= new MemoryBlock(id,dato,size, null, fin);// se hace  una instancia creando un nodo  al final de la lista.
 			fin.anterior.siguiente=fin;
 			}else{
-				inicio=fin=new NodoDoble(id,byteTotales);
+				inicio=fin=new MemoryBlock(id,dato,size);
 			}
 		}
 	/**
 	 * agregarInicio es un metodo cuya funci�n es agregar un elemento al inicio de  la lista 
 	 *  
 	 */
-	public void agregarInicio(String id, int byteTotales){
+	public void agregarInicio(String id, String dato, int size){
 		if (!estaVacia()){//verifica que la lista no est� vac�a 
-			inicio=new NodoDoble(id,byteTotales,inicio, null);
+			inicio=new MemoryBlock(id,dato,size);
 			inicio.siguiente.anterior= inicio;
 			}else{
-				inicio=fin=new NodoDoble(id,byteTotales);
+				inicio=fin=new MemoryBlock(id,dato,size);
 			}
 		}
 	
@@ -51,9 +57,9 @@ public class ListaDoble {
 	public String mostrarInicioFin(){
 		String datos="<=>";
 		if(!estaVacia()){
-			NodoDoble auxiliar = inicio;
+			MemoryBlock auxiliar = inicio;
 			while (auxiliar!=null){
-				datos = datos + "{"+auxiliar.id+"}"+"<=>";
+				datos = datos + "{"+auxiliar.idEspacio+"}"+"<=>";
 				auxiliar=auxiliar.siguiente;
 				
 			}	
@@ -68,9 +74,9 @@ public class ListaDoble {
 	public String mostrarFinInicio(){
 		String datos="<=>";
 		if(!estaVacia()){
-			NodoDoble auxiliar = fin;
+			MemoryBlock auxiliar = fin;
 			while (auxiliar!=null){
-				datos = datos + "{"+auxiliar.id+"}"+"<=>";
+				datos = datos + "{"+auxiliar.idEspacio+"}"+"<=>";
 				auxiliar=auxiliar.anterior;
 				
 			}		
@@ -84,12 +90,12 @@ public class ListaDoble {
 	 * @return  si  se encuentra el  elemento se  retorna
 	 */
 	public Object buscar(Object elemento){
-		NodoDoble auxiliar=inicio;
-		for ( ; auxiliar != null && !elemento.equals(auxiliar.id); auxiliar = auxiliar.siguiente);
+		MemoryBlock auxiliar=inicio;
+		for ( ; auxiliar != null && !elemento.equals(auxiliar.idEspacio); auxiliar = auxiliar.siguiente);
 		if(auxiliar==null){
 			return null;
 		}else{
-			return auxiliar.id;
+			return auxiliar.idEspacio;
 		}
 		
 	}
@@ -123,30 +129,27 @@ public class ListaDoble {
 	 *
 	 */
 	public void borrar(Object dato){
-		NodoDoble buscado = null; 
-		NodoDoble iterador = inicio;
+		MemoryBlock buscado = null;
+		MemoryBlock iterador = inicio;
 		if(inicio==fin){
-			inicio=fin=null;
-		}else if (dato.equals(inicio.id)){
-			inicio=inicio.siguiente;
-			inicio.anterior=null;
-		}else if (dato.equals(fin.id)){
-			fin=fin.anterior;
-			fin.siguiente=null;
+			inicio.dato=fin.dato=null;
+		}else if (dato.equals(inicio.idEspacio)){
+			inicio.dato=null;;
+		}else if (dato.equals(fin.idEspacio)){
+			fin.dato=null;
 		}else{
 			while ( buscado == null && iterador != null ) {
-				if ( dato.equals(iterador.id)) {
+				if ( dato.equals(iterador.idEspacio)) {
 					buscado = iterador; 
 				} 
 				iterador = iterador.siguiente; 
 			 	}
-			buscado.anterior.siguiente=buscado.siguiente;
-			buscado.siguiente.anterior=buscado.anterior;
+			buscado.dato=null;
 			}
 		}
 
 	public int length(){
-		NodoDoble auxiliar = inicio;
+		MemoryBlock auxiliar = inicio;
 		int contador = 0;
 		if(inicio==null && fin==null){
 			return contador;

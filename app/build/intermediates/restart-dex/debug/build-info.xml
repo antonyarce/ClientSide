@@ -4,29 +4,29 @@
     density="hdpi"
     format="8"
     plugin-version="2.2.0"
-    timestamp="3691868831198"
+    timestamp="51601648832820"
     token="-4279510492465985577"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="71" />
+        duration="898" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="6" />
+        duration="489" />
     <task
         name="verifier"
-        duration="1" />
+        duration="4" />
 
     <artifact
         location="/home/allan/AndroidStudioProjects/ClientSideAndroid/app/build/outputs/apk/app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="3691868831198"
+        timestamp="51601648832820"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/allan/AndroidStudioProjects/ClientSideAndroid/app/build/outputs/apk/app-debug.apk"

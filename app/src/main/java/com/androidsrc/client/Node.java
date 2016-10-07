@@ -52,12 +52,15 @@ public class Node extends AsyncTask<Void, Void, Void> {
 
             JSONObject json = new JSONObject();
 
-            json.put("puerto", lstPort);
-            json.put("bytesDisp", bytesDis);
-            json.put("numero", num);
             json.put("tipo", "meshMemClient");
             json.put("Accion","NodeConexion");
             json.put("Ip",ip);
+            json.put("puerto", lstPort);
+            json.put("numero", num);
+            json.put("bytesDisp", bytesDis);
+
+
+
 
 
             // Envia mensaje al servidor
@@ -70,8 +73,7 @@ public class Node extends AsyncTask<Void, Void, Void> {
             response = istream.readUTF();
 
             JsonManager.parse(response);
-
-            //activity.pasar();
+            System.out.println(response);
 
 
 

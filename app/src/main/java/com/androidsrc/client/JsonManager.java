@@ -19,6 +19,22 @@ public class JsonManager {
             String id = parser.getString("ID");
             int size = parser.getInt("Size");
         }
+        if(accion.equalsIgnoreCase("Agregar1")){
+            String id = parser.getString("UUIDEspacio");
+            int size = Integer.parseInt(parser.getString("Size"));
+            ListManager.listaBloques.agregarInicio(id,null,size);
+        }
+        if(accion.equalsIgnoreCase("Agregar2")){
+            String id = parser.getString("UUIDEspacio");
+            int size = Integer.parseInt(parser.getString("Size"));
+            String dato = parser.getString("Dato");
+            ListManager.listaBloques.agregarInicio(id,dato,size);
+
+        }
+        if(accion.equalsIgnoreCase("Liberar")){
+            String id = parser.getString("UUIDEspacio");
+            ListManager.listaBloques.borrar(id);
+        }
 
     }
 }

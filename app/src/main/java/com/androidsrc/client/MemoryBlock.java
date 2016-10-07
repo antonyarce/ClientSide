@@ -1,41 +1,57 @@
 package com.androidsrc.client;
 
-/**
- * Created by allan on 03/10/16.
- */
-
 public class MemoryBlock {
-    int size;
-    String idEspacio;
-    String dato;
+	int size;
+	String idEspacio;
+	String dato;
+	public MemoryBlock siguiente;
+	public MemoryBlock anterior;
+	boolean itsFree;
+	
+	//Constructor para cuando aun no hay nodos
+	public MemoryBlock(String id, String dato, int size){
+		this.idEspacio=id;
+		this.anterior=null;
+		this.siguiente=null;
+		this.dato=dato;
+		this.size=size;
 
-    public MemoryBlock(String idEspacio, String dato, int size) {
-        this.idEspacio = idEspacio;
-        this.dato = dato;
-        this.size = size;
-    }
 
-    public int getSize() {
-        return size;
-    }
+	}
 
-    public void setSize(int size) {
-        this.size = size;
-    }
 
-    public String getIdEspacio() {
-        return idEspacio;
-    }
+	
+	//Constructor para cuando ya hay nodos
+	public MemoryBlock(String id,String dato, int size, MemoryBlock sig, MemoryBlock ant) {
+		this.size=size;
+		this.dato=dato;
+		this.idEspacio=id;
+		siguiente=sig;
+		anterior=ant;
+	}
 
-    public void setIdEspacio(String idEspacio) {
-        this.idEspacio = idEspacio;
-    }
+	public int getSize() {
+		return size;
+	}
 
-    public String getDato() {
-        return dato;
-    }
+	public void setSize(int size) {
+		this.size = size;
+	}
 
-    public void setDato(String dato) {
-        this.dato = dato;
-    }
+	public String getIdEspacio() {
+		return idEspacio;
+	}
+
+	public void setIdEspacio(String idEspacio) {
+		this.idEspacio = idEspacio;
+	}
+
+	public String getDato() {
+		return dato;
+	}
+
+	public void setDato(String dato) {
+		this.dato = dato;
+	}
+	
 }
