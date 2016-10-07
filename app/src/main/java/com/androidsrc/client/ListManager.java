@@ -8,9 +8,8 @@ import java.util.PriorityQueue;
 
 public class ListManager {
     public static ListaDoble listaBloques = new ListaDoble();
-    private static int BytesTotales;
-    private static int BytesDisponibles;
-
+    private static int BytesTotales ;
+    private static int BytesDisponibles ;
 
     public static void agregarBloque(int tamano){
         BytesDisponibles = BytesDisponibles-tamano;

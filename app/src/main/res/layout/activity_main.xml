@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/layout">
+    android:id="@+id/layout"
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/infoip"
@@ -79,5 +80,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/GEstadoMemoria" />
+
+    <Button
+        android:text="Graficar los bloques del nodo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/GEstadoBloques" />
 
 </LinearLayout>

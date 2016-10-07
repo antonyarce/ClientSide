@@ -14,7 +14,7 @@ public class MainActivity extends Activity{
 	LinearLayout linear;
 	TextView response;
 	EditText editTextAddress, editTextPort, editTextLstPort, editTextBytes, editTextNum;
-	Button buttonConnect, buttonClear,GEstadoNodo;
+	Button buttonConnect, buttonClear,GEstadoNodo,GBloques;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class MainActivity extends Activity{
 		response = (TextView) findViewById(R.id.responseTextView);
 		linear = (LinearLayout)findViewById(R.id.layout);
 		GEstadoNodo = (Button)findViewById(R.id.GEstadoMemoria);
-
+        GBloques = (Button) findViewById(R.id.GEstadoBloques);
 
 		buttonConnect.setOnClickListener(new OnClickListener() {
 
@@ -68,6 +68,12 @@ public class MainActivity extends Activity{
 				pasarGraficacion();
 			}
 		});
+		GBloques.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+                GraficarBloques();
+			}
+		});
 
 	}
 
@@ -84,4 +90,8 @@ public class MainActivity extends Activity{
 	}
 
 
+	public void GraficarBloques(){
+		Intent i = new Intent(MainActivity.this,DatosEnBloques.class);
+		startActivity(i);
+	}
 }
