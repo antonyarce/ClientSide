@@ -14,7 +14,7 @@ public class MainActivity extends Activity{
 	LinearLayout linear;
 	TextView response;
 	EditText editTextAddress, editTextPort, editTextLstPort, editTextBytes, editTextNum;
-	Button buttonConnect, buttonClear;
+	Button buttonConnect, buttonClear,GEstadoNodo;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class MainActivity extends Activity{
 		buttonClear = (Button) findViewById(R.id.clearButton);
 		response = (TextView) findViewById(R.id.responseTextView);
 		linear = (LinearLayout)findViewById(R.id.layout);
-
+		GEstadoNodo = (Button)findViewById(R.id.GEstadoMemoria);
 
 
 		buttonConnect.setOnClickListener(new OnClickListener() {
@@ -60,6 +60,15 @@ public class MainActivity extends Activity{
 				response.setText("");
 			}
 		});
+
+		GEstadoNodo.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				pasarGraficacion();
+			}
+		});
+
 	}
 
 
@@ -67,6 +76,10 @@ public class MainActivity extends Activity{
 
 	public void pasar(){
 		Intent i = new Intent(MainActivity.this,MapActivity.class);
+		startActivity(i);
+	}
+	public void pasarGraficacion(){
+		Intent i = new Intent(MainActivity.this,GEstadoDelNodo.class);
 		startActivity(i);
 	}
 
