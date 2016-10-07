@@ -95,7 +95,7 @@ public class ListaDoble {
 		if(auxiliar==null){
 			return null;
 		}else{
-			return auxiliar.idEspacio;
+			return auxiliar.getDato();
 		}
 		
 	}
@@ -128,15 +128,15 @@ public class ListaDoble {
 	 *  la funcion de este m�todo consiste en buscar un elemento en la lista y lo elimina
 	 *
 	 */
-	public void borrar(Object dato){
+	public void liberar(Object dato){
 		MemoryBlock buscado = null;
 		MemoryBlock iterador = inicio;
 		if(inicio==fin){
-			inicio.dato=fin.dato=null;
+			inicio.setItsFree(true);
 		}else if (dato.equals(inicio.idEspacio)){
-			inicio.dato=null;;
+			inicio.setItsFree(true);
 		}else if (dato.equals(fin.idEspacio)){
-			fin.dato=null;
+			fin.setItsFree(true);
 		}else{
 			while ( buscado == null && iterador != null ) {
 				if ( dato.equals(iterador.idEspacio)) {
@@ -144,9 +144,51 @@ public class ListaDoble {
 				} 
 				iterador = iterador.siguiente; 
 			 	}
-			buscado.dato=null;
+			buscado.setItsFree(true);
 			}
 		}
+	public void ponerNull(Object dato){
+		MemoryBlock buscado = null;
+		MemoryBlock iterador = inicio;
+		if(inicio==fin){
+			inicio.setDato(null);
+		}else if (dato.equals(inicio.idEspacio)){
+			inicio.setDato(null);
+		}else if (dato.equals(fin.idEspacio)){
+			fin.setDato(null);
+		}else{
+			while ( buscado == null && iterador != null ) {
+				if ( dato.equals(iterador.idEspacio)) {
+					buscado = iterador;
+				}
+				iterador = iterador.siguiente;
+			}
+			buscado.setDato(null);
+		}
+	}
+
+	public void borrar(String id) {
+		MemoryBlock buscado = null;
+		MemoryBlock iterador = inicio;
+		if (inicio == fin) {
+			inicio = fin = null;
+		} else if (id.equals(inicio.getIdEspacio())) {
+			inicio = inicio.siguiente;
+			inicio.anterior = null;
+		} else if (id.equals(fin.getIdEspacio())) {
+			fin = fin.anterior;
+			fin.siguiente = null;
+		} else {
+			while (buscado == null && iterador != null) {
+				if (id.equals(iterador.getIdEspacio())) {
+					buscado = iterador;
+				}
+				iterador = iterador.siguiente;
+			}
+			buscado.anterior.siguiente = buscado.siguiente;
+			buscado.siguiente.anterior = buscado.anterior;
+		}
+	}
 
 	public int length(){
 		MemoryBlock auxiliar = inicio;
