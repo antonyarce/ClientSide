@@ -89,7 +89,6 @@ public class MainActivity extends Activity{
 		startActivity(i);
 	}
 
-
 	public void GraficarBloques(){
 		Intent i = new Intent(MainActivity.this,DatosEnBloques.class);
 		startActivity(i);

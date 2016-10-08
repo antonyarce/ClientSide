@@ -18,9 +18,10 @@ public class DatosEnBloques extends MainActivity {
         setContentView(R.layout.activity_datos_en_bloques);
 
 
-        ListManager.listaBloques.agregarInicio("123",null,10);
-        ListManager.listaBloques.agregarFinal("456",null,50);/*
-        ListManager.listaBloques.agregarInicio("789","ya me jodi",100);*/
+        /*ListManager.listaBloques.agregarInicio("123",null,10);
+        ListManager.listaBloques.agregarFinal("456",null,50);
+        ListManager.listaBloques.agregarInicio("789",null,100);*/
+
 
         ArrayList<String> labels = new ArrayList<String>();
         ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
