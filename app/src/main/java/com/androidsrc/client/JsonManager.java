@@ -33,7 +33,10 @@ public class JsonManager {
         }
         if(accion.equalsIgnoreCase("Liberar")){
             String id = parser.getString("UUIDEspacio");
-            ListManager.listaBloques.borrar(id);
+            ListManager.listaBloques.liberar(id);
+        }
+        if(accion.equalsIgnoreCase("Buscar")){
+            String id = parser.getString("UUIEspacio");
         }
 
     }

@@ -15,6 +15,7 @@ public class MemoryBlock {
 		this.siguiente=null;
 		this.dato=dato;
 		this.size=size;
+		this.itsFree=false;
 
 
 	}
@@ -28,6 +29,7 @@ public class MemoryBlock {
 		this.idEspacio=id;
 		siguiente=sig;
 		anterior=ant;
+		this.itsFree=false;
 	}
 
 	public int getSize() {
@@ -53,5 +55,8 @@ public class MemoryBlock {
 	public void setDato(String dato) {
 		this.dato = dato;
 	}
-	
+
+	public boolean isItsFree() {return itsFree;}
+
+	public void setItsFree(boolean itsFree) {this.itsFree = itsFree;}
 }
